@@ -17,9 +17,10 @@
     .ml-bars{display:flex;flex-direction:column;gap:14px;width:88%;margin:12px auto}.ml-bar{display:grid;grid-template-columns:170px 1fr 80px;gap:12px;align-items:center;font-weight:800}.ml-track{height:25px;background:#e6edf1;border-radius:20px;overflow:hidden}.ml-fill{height:100%;background:linear-gradient(90deg,#0aa79d,#16c4b9);border-radius:20px}.ml-bar.orange .ml-fill{background:linear-gradient(90deg,#ef7837,#ff9a62)}
     .ml-code,.ml-code code{direction:ltr;text-align:left;white-space:pre-wrap;margin:0;background:#071f38!important;color:#eef7f6!important;border-radius:14px;font:700 .9rem/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;text-shadow:none!important}.ml-code{padding:18px 22px;border-right:6px solid #16a39a;box-shadow:0 12px 28px rgba(6,30,58,.14)}.ml-code code{padding:0}.ml-code .comment{color:#8bd8cf!important}.ml-code .result{color:#ffb184!important}
     .ml-download{display:inline-flex;align-items:center;justify-content:center;width:max-content;margin:8px auto 0;padding:14px 24px;border-radius:12px;background:#0a315c!important;color:#fff!important;font-weight:900;text-decoration:none;box-shadow:0 10px 24px rgba(10,49,92,.18)}.ml-download:hover{background:#0d477d!important}
+    .ml-quiz{display:grid;gap:14px;width:min(900px,92%);margin:0 auto}.ml-question{font-size:1.35rem;line-height:1.75;text-align:center;font-weight:900;color:#0a315c}.ml-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ml-option{border:2px solid #cbd9df;background:#fff;color:#123654;border-radius:14px;padding:16px 18px;font:inherit;font-size:1rem;font-weight:800;line-height:1.5;cursor:pointer;transition:.18s transform,.18s border-color,.18s background}.ml-option:hover,.ml-option:focus-visible{transform:translateY(-2px);border-color:#0aa79d;outline:none}.ml-option.correct{background:#e7f8f4;border-color:#0aa79d;color:#075b55}.ml-option.wrong{background:#fff0eb;border-color:#ef7837;color:#983a13}.ml-feedback{min-height:62px;border-radius:13px;padding:14px 18px;text-align:center;font-weight:800;line-height:1.6;background:#edf3f6;color:#415667}.ml-feedback.correct{background:#e7f8f4;color:#075b55}.ml-feedback.wrong{background:#fff0eb;color:#983a13}
     .ml-activity{background:#fbfcfd!important;color:#172b3f!important}.ml-activity .slide-title{color:#092f5a!important;text-shadow:none!important}.ml-activity .slide-title-line{background:#ef7837!important}.ml-activity .ml-card{background:rgba(255,255,255,.97)!important}.ml-badge{display:inline-block;background:#f47a38;color:#fff;border-radius:20px;padding:5px 14px;font-size:.82rem;font-weight:800;width:max-content}
     .ml-divider .div-title{color:#092f5a!important;text-shadow:none!important;direction:rtl!important;text-align:right!important;justify-self:stretch!important;width:100%!important;max-width:540px!important;font-size:clamp(3rem,5.2vw,5rem)!important;line-height:1.12!important;text-wrap:balance!important;word-break:normal!important}.ml-divider .div-kicker{color:#ef7837!important;text-shadow:none!important}.ml-divider .div-theme{color:#506371!important;text-shadow:none!important;direction:rtl!important;text-align:right!important}.ml-divider .div-obj,.ml-divider .div-obj span:not(.div-obj-num){color:#092f5a!important;text-shadow:none!important}.ml-divider .div-obj-num{color:#fff!important}.ml-quote{font-size:1.55rem;line-height:1.8;color:#0a315c;font-weight:900;text-align:center;padding:38px 70px}.ml-small{font-size:.84rem;color:#657889}
-    @media(max-width:900px){.ml-grid,.ml-grid.three{grid-template-columns:1fr}.ml-flow{display:grid;grid-template-columns:1fr}.ml-arrow{transform:rotate(90deg)}.ml-card{padding:15px}.ml-lead{font-size:1.05rem}.ml-bar{grid-template-columns:110px 1fr 55px}}
+    @media(max-width:900px){.ml-grid,.ml-grid.three,.ml-options{grid-template-columns:1fr}.ml-flow{display:grid;grid-template-columns:1fr}.ml-arrow{transform:rotate(90deg)}.ml-card{padding:15px}.ml-lead{font-size:1.05rem}.ml-bar{grid-template-columns:110px 1fr 55px}}
   `;
   document.head.appendChild(style);
 
@@ -314,6 +315,74 @@ preprocess = ColumnTransformer([
     'ابنِ numeric_pipe وcategory_pipe، ثم استخدم transform فقط على بيانات الاختبار وتأكد من عدم وجود قيم مفقودة.'
   ));
 
+  const quiz = (question, options) => '<div class="ml-quiz"><div class="ml-question">' + question + '</div><div class="ml-options">' + options.map(option => '<button type="button" class="ml-option" data-correct="' + (option[1] ? 'true' : 'false') + '" data-reason="' + option[2] + '">' + option[0] + '</button>').join('') + '</div><div class="ml-feedback" aria-live="polite">اختَر إجابة لتظهر لك التغذية الراجعة.</div></div>';
+  const insertAfter = (title, newSlide) => {
+    const marker = '<div class="slide-title">' + title + '<';
+    const index = slides.findIndex(slide => slide.includes(marker));
+    if (index >= 0) slides.splice(index + 1, 0, newSlide);
+  };
+
+  insertAfter('خريطة مجالات الذكاء الاصطناعي', content('تفاعل 1: تحت أي مجال تندرج الحالة؟', quiz(
+    'نظام ينشئ وصفًا جديدًا لمنتج اعتمادًا على نقاط يكتبها الموظف. ما الوصف الأدق؟',
+    [
+      ['نظام قواعد ثابتة', false, 'ليس صحيحًا؛ النظام لا يطبق قائمة قواعد ثابتة، بل ينشئ محتوى جديدًا.'],
+      ['تصنيف (Classification)', false, 'التصنيف يختار فئة جاهزة، بينما الحالة هنا تنتج نصًا جديدًا.'],
+      ['ذكاء اصطناعي توليدي (Generative AI)', true, 'صحيح؛ لأنه ينشئ نصًا جديدًا اعتمادًا على تعليمات المستخدم.'],
+      ['تجميع (Clustering)', false, 'التجميع يكتشف مجموعات متشابهة ولا يكتب وصفًا جديدًا.']
+    ]
+  ), 'ml-activity'));
+
+  insertAfter('ثلاثة أنماط شائعة للمسائل', content('تفاعل 2: حدّد نوع المسألة', quiz(
+    'نريد تقدير عدد الأيام اللازمة لإنجاز معاملة جديدة. ما نوع المسألة؟',
+    [
+      ['تصنيف (Classification)', false, 'التصنيف يعطي فئة، لكن المطلوب هنا قيمة رقمية بعدد الأيام.'],
+      ['انحدار (Regression)', true, 'صحيح؛ لأن المخرج رقم له مقدار: عدد الأيام.'],
+      ['تجميع (Clustering)', false, 'التجميع يبحث عن مجموعات بلا هدف جاهز، وهذا ليس المطلوب هنا.'],
+      ['توليد نص (Text Generation)', false, 'لا نحتاج إنشاء نص؛ نحتاج تقدير قيمة رقمية.']
+    ]
+  ), 'ml-activity'));
+
+  insertAfter('صياغة مسألة تعلم آلة جيدة', content('تفاعل 3: أي صياغة أفضل؟', quiz(
+    'اختَر الصياغة التي تحدد المستخدم والقرار والهدف والزمن بوضوح:',
+    [
+      ['نريد تحسين تجربة العملاء بالذكاء الاصطناعي.', false, 'الصياغة عامة؛ لا تحدد نتيجة أو قرارًا أو زمنًا.'],
+      ['نريد استخدام أفضل خوارزمية لتقليل التوقف.', false, 'بدأت بالخوارزمية ولم تحدد من يستخدم النتيجة أو متى.'],
+      ['نحدد كل أسبوع العملاء المحتمل توقفهم خلال 30 يومًا ليعطيهم فريق الاحتفاظ أولوية التواصل.', true, 'صحيح؛ حددت المستخدم والقرار والهدف والأفق الزمني.'],
+      ['نحلل بيانات العملاء وننشئ تقريرًا.', false, 'لا نعرف ما القرار الذي سيتغير ولا ما المخرج المطلوب.']
+    ]
+  ), 'ml-activity'));
+
+  insertAfter('الخطوة 2: قياس القيم المفقودة', content('تفاعل 4: اختر قرار المعالجة', quiz(
+    'عميل جديد لا يملك avg_rating لأنه لم يقيّم أي طلب بعد. ما القرار الأفضل كبداية؟',
+    [
+      ['نحوّل القيمة إلى صفر', false, 'الصفر يوحي بتقييم سيئ، بينما العميل لم يقيّم أصلًا.'],
+      ['نحذف جميع العملاء الجدد', false, 'سنفقد مجموعة مهمة وقد نصنع تحيزًا في البيانات.'],
+      ['نعوض بقيمة مناسبة ونضيف مؤشرًا بأن التقييم كان مفقودًا', true, 'صحيح؛ نحافظ على معنى أن العميل لم يقيّم ونمنع بقاء الخلية فارغة.'],
+      ['نضع أعلى تقييم وهو 5', false, 'لا يوجد دليل أن تقييمه ممتاز، وهذا يضيف معلومة مختلقة.']
+    ]
+  ), 'ml-activity'));
+
+  insertAfter('الخطوة 6: استبعاد المعرّف وتسرب المستقبل', content('تفاعل 5: اكتشف العمود الآمن', quiz(
+    'سنصدر النتيجة في 1 نوفمبر 2025. أي عمود يمكن استخدامه بأمان إذا كان محسوبًا حتى هذا التاريخ؟',
+    [
+      ['next_month_orders', false, 'هذا العمود يصف الشهر التالي، لذلك يكشف المستقبل.'],
+      ['support_ticket_after_snapshot', false, 'اسمه يوضح أنه سُجل بعد تاريخ اللقطة.'],
+      ['orders_last_30d', true, 'صحيح؛ يصف سلوك الثلاثين يومًا السابقة والمتاح لحظة التنبؤ.'],
+      ['refund_issued بعد القرار', false, 'الاسترداد اللاحق لم يكن متاحًا وقت إصدار النتيجة.']
+    ]
+  ), 'ml-activity'));
+
   deck.innerHTML = slides.join('');
+  deck.addEventListener('click', event => {
+    const option = event.target.closest('.ml-option');
+    if (!option) return;
+    const quizBox = option.closest('.ml-quiz');
+    quizBox.querySelectorAll('.ml-option').forEach(button => button.classList.remove('correct', 'wrong'));
+    const isCorrect = option.dataset.correct === 'true';
+    option.classList.add(isCorrect ? 'correct' : 'wrong');
+    const feedback = quizBox.querySelector('.ml-feedback');
+    feedback.className = 'ml-feedback ' + (isCorrect ? 'correct' : 'wrong');
+    feedback.textContent = option.dataset.reason;
+  });
   deck.querySelectorAll('.ml-slide').forEach((slide,index)=>slide.querySelector('.slide-inner')?.insertAdjacentHTML('afterbegin',`<span class="ml-index">${String(index+2).padStart(2,'0')}</span>`));
 })();
