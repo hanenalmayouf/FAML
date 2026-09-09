@@ -263,6 +263,57 @@ preprocess = ColumnTransformer([
 
   revise('نشاط تنظيف بيانات منافذ', '<span class="ml-badge">نشاط مفاهيمي · 15 دقيقة</span><p class="ml-lead">قبل فتح الكود، اتخذوا قرارات التنظيف كمحللي بيانات. الهدف تفسير المشكلة، لا تكرار خلايا المختبر.</p><div class="ml-grid"><div class="ml-card"><h3>الحالات الأربع</h3><ol><li>avg_rating مفقود لعميل جديد.</li><li>last_promo_used فارغ.</li><li>avg_basket_sar = 534.83 ريال.</li><li>next_month_orders متاح بعد تاريخ اللقطة.</li></ol></div><div class="ml-card orange"><h3>أجيبوا عن كل حالة</h3><ol><li>هل هي مشكلة جودة فعلًا؟</li><li>ما التفسير المحتمل؟</li><li>ما القرار: تعويض، إبقاء، استبعاد، أم مراجعة؟</li><li>ما الخطر إذا اتخذنا قرارًا خاطئًا؟</li></ol></div></div><div class="ml-note dark"><b>التسليم داخل المحاضرة:</b> جدول قرارات من أربعة صفوف بلا كود. بعد المناقشة، يفتح كل طالب الـLab لتنفيذ القرارات برمجيًا.</div>', 'ml-activity');
 
+  const demo = (code, explanation, output, labTask) => '<div class="ml-grid"><div><pre class="ml-code"><code>' + code + '</code></pre><div class="ml-card orange"><h3>ماذا تفعل؟</h3><p>' + explanation + '</p></div></div><div><div class="ml-card"><h3>الناتج (Output)</h3><pre class="ml-code"><code><span class="result">' + output + '</span></code></pre></div><div class="ml-note"><b>تطبيق الـLab:</b> ' + labTask + '</div></div></div>';
+
+  revise('الخطوة 1: قراءة البيانات وفهم شكلها', demo(
+    'df.shape',
+    '<b>shape</b> خاصية تعرض بُعدين: عدد الصفوف أولًا، ثم عدد الأعمدة. لا تغيّر البيانات؛ فقط تصف حجم الجدول.',
+    '(48000, 19)',
+    'استخدم head() وinfo() مع shape، ثم اكتب ماذا يمثل الصف وما هو العمود المستهدف.'
+  ));
+
+  revise('الخطوة 2: قياس القيم المفقودة', demo(
+    'df.isna().mean().mul(100).round(1)',
+    '<b>isna()</b> يحول كل خلية إلى مفقودة أو غير مفقودة، و<b>mean()</b> يحسب نسبة المفقود، ثم <b>mul(100)</b> يحولها إلى نسبة مئوية و<b>round(1)</b> يقربها.',
+    'avg_rating         31.0\nlast_promo_used    22.0',
+    'شغّل الدالة، اعرض الأعمدة التي فيها فقد فقط، ثم فسّر لماذا حدث الفقد في كل عمود.'
+  ));
+
+  revise('الخطوة 3: معالجة المفقود دون تغيير المعنى', demo(
+    'df[&quot;last_promo_used&quot;].fillna(&quot;never_used&quot;)',
+    '<b>fillna()</b> تستبدل القيم المفقودة بقيمة نحددها. هنا اخترنا فئة نصية واضحة لأن الفراغ يعني أن العميل لم يستخدم عرضًا سابقًا.',
+    'القيم المفقودة قبل المعالجة: 10560\nالقيم المفقودة بعد المعالجة: 0',
+    'طبّق معالجة مختلفة على avg_rating؛ استخدم الوسيط (Median) مع الاحتفاظ بمؤشر يوضح أن القيمة كانت مفقودة.'
+  ));
+
+  revise('الخطوة 4: فحص التكرار والنطاقات', demo(
+    'df.duplicated().sum()\ndf[&quot;avg_rating&quot;].between(1, 5)',
+    '<b>duplicated()</b> يحدد الصفوف المكررة، و<b>sum()</b> يعدّها. أما <b>between(1, 5)</b> فيتحقق هل كل تقييم داخل النطاق المقبول.',
+    'الصفوف المكررة: 0\nمعرّفات العملاء المكررة: 0\nتقييمات خارج النطاق: 0',
+    'اكتب ثلاثة فحوص: التكرار، نطاق promo_usage_rate، والقيم غير الموجبة في avg_basket_sar.'
+  ));
+
+  revise('الخطوة 5: هل القيمة المرتفعة خطأ؟', demo(
+    'df[&quot;avg_basket_sar&quot;].describe()',
+    '<b>describe()</b> يلخص العمود الرقمي ويعرض العدد والمتوسط والانحراف والربيعات وأصغر وأكبر قيمة. يساعدنا على ملاحظة القيم غير المعتادة، لكنه لا يقرر حذفها.',
+    '50% (Median) = 79.64\nmax = 534.83',
+    'استخدم الربيعات (IQR) لاكتشاف السلال المرتفعة، ثم افحص عينة منها قبل اتخاذ قرار الحذف أو الإبقاء.'
+  ));
+
+  revise('الخطوة 6: استبعاد المعرّف وتسرب المستقبل', demo(
+    'X = df.drop(columns=drop_cols)\ny = df[&quot;churned_30d&quot;]',
+    '<b>drop(columns=...)</b> ينشئ جدول خصائص بعد حذف الأعمدة غير المسموح بها. ونفصل الهدف في <b>y</b> حتى لا يدخل ضمن المدخلات.',
+    'X.shape = (48000, 14)\ny.shape = (48000,)',
+    'كوّن drop_cols بنفسك، واكتب بجانب كل عمود سبب الاستبعاد: معرّف، هدف، أو معلومة من المستقبل.'
+  ));
+
+  revise('الخطوة 7: الترميز والتحجيم داخل مسار آمن', demo(
+    'X_train_ready = preprocess.fit_transform(X_train)',
+    '<b>fit_transform()</b> يتعلم قيم التعويض والتحجيم من بيانات التدريب، ثم يطبقها ويحوّل الفئات النصية إلى أعمدة رقمية. لا نستخدمه على الاختبار.',
+    'المدخل: أرقام + فئات + قيم مفقودة\nالناتج: مصفوفة رقمية جاهزة للنموذج',
+    'ابنِ numeric_pipe وcategory_pipe، ثم استخدم transform فقط على بيانات الاختبار وتأكد من عدم وجود قيم مفقودة.'
+  ));
+
   deck.innerHTML = slides.join('');
   deck.querySelectorAll('.ml-slide').forEach((slide,index)=>slide.querySelector('.slide-inner')?.insertAdjacentHTML('afterbegin',`<span class="ml-index">${String(index+2).padStart(2,'0')}</span>`));
 })();
