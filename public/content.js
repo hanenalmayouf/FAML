@@ -372,6 +372,46 @@ preprocess = ColumnTransformer([
     ]
   ), 'ml-activity'));
 
+  const dayOneDivider = slides.findIndex(slide => slide.includes('من سؤال العمل إلى بيانات جاهزة'));
+  const dayTwoDivider = slides.findIndex(slide => slide.includes('من البيانات الجاهزة إلى نموذج تصنيف'));
+  const dayOneOrder = [
+    'دفتر Google Colab لليوم الأول',
+    'كيف بدأ الذكاء الاصطناعي؟',
+    'خريطة مجالات الذكاء الاصطناعي',
+    'تحت أي مجال تندرج الحالة؟',
+    'متى نستخدم تعلم الآلة؟',
+    'ثلاثة أنماط شائعة للمسائل',
+    'تفاعل 2: حدّد نوع المسألة',
+    'صياغة مسألة تعلم آلة جيدة',
+    'تفاعل 3: أي صياغة أفضل؟',
+    'جودة البيانات قبل كمية البيانات',
+    'نشاط 1: حوّل تحديًا إلى مسألة تعلم آلة',
+    'مجموعة بيانات منافذ',
+    'الصف والعمود داخل البيانات',
+    'الخصائص والهدف',
+    'ما البيانات غير النظيفة في ملف منافذ؟',
+    'الخطوة 1: قراءة البيانات وفهم شكلها',
+    'الخطوة 2: قياس القيم المفقودة',
+    'تفاعل 4: اختر قرار المعالجة',
+    'الخطوة 3: معالجة المفقود دون تغيير المعنى',
+    'الخطوة 4: فحص التكرار والنطاقات',
+    'الخطوة 5: هل القيمة المرتفعة خطأ؟',
+    'الخطوة 6: استبعاد المعرّف وتسرب المستقبل',
+    'تفاعل 5: اكتشف العمود الآمن',
+    'زمن التنبؤ',
+    'الخطوة 7: الترميز والتحجيم داخل مسار آمن',
+    'نشاط تنظيف بيانات منافذ',
+    'ملخص اليوم الأول'
+  ];
+  if (dayOneDivider >= 0 && dayTwoDivider > dayOneDivider) {
+    const dayOneBody = slides.slice(dayOneDivider + 1, dayTwoDivider);
+    const orderedDayOne = dayOneOrder.map(title => {
+      const marker = '<div class="slide-title">' + title + '<';
+      return dayOneBody.find(slide => slide.includes(marker));
+    }).filter(Boolean);
+    slides.splice(dayOneDivider + 1, dayTwoDivider - dayOneDivider - 1, ...orderedDayOne);
+  }
+
   deck.innerHTML = slides.join('');
   deck.addEventListener('click', event => {
     const option = event.target.closest('.ml-option');
