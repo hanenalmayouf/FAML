@@ -1,0 +1,8 @@
+{
+  "name": "sdaia-interactive-arabic-deck",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}
