@@ -9,7 +9,7 @@
       .ar{font-family:"IBM Plex Sans Arabic","Noto Sans Arabic",Arial,sans-serif}.en{font-family:Inter,Arial,sans-serif}
       .label{font-size:22px;font-weight:700;fill:#20366f}.small{font-size:17px;font-weight:600;fill:#54627a}
       .head{font-size:18px;font-weight:700;fill:#fff}.cell{font-size:18px;font-weight:600;fill:#273750}
-      .target{font-size:18px;font-weight:800;fill:#20366f}.caption{font-size:18px;font-weight:700;fill:#20366f}
+      .target{font-size:18px;font-weight:800;fill:#20366f}.caption{font-size:18px;font-weight:800;fill:#20366f}
     </style>
   </defs>
   <rect width="1320" height="650" rx="30" fill="#f7f8fc"/>
@@ -45,16 +45,14 @@
     <text x="164" y="487" class="target">1</text><text x="362" y="487" class="cell">4.48</text><text x="566" y="487" class="cell">83</text><text x="762" y="487" class="cell">46.88</text><text x="955" y="487" class="cell">Riyadh</text><text x="1149" y="487" class="cell">C000005</text>
   </g>
   <g class="ar" direction="rtl">
-    <path d="M1138 527v28h-166" fill="none" stroke="#6675a3" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="1138" cy="527" r="5" fill="#6675a3"/>
-    <text x="958" y="563" text-anchor="end" class="caption">كل صف = عميل واحد</text>
-    <path d="M764 107V91h-136" fill="none" stroke="#6675a3" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="764" cy="107" r="5" fill="#6675a3"/>
-    <text x="616" y="98" text-anchor="end" class="caption">كل عمود = خاصية</text>
-    <path d="M164 527v32h154" fill="none" stroke="#e98024" stroke-width="4" stroke-linecap="round"/>
-    <circle cx="164" cy="527" r="6" fill="#e98024"/>
-    <text x="332" y="568" text-anchor="start" class="caption">العمود البرتقالي = الهدف</text>
-    <rect x="405" y="585" width="510" height="43" rx="21.5" fill="#e9edf7"/>
-    <text x="660" y="614" text-anchor="middle" class="small">NaN تعني قيمة مفقودة وليست صفرًا</text>
+    <rect x="72" y="542" width="365" height="72" rx="18" fill="#eaf7f5"/>
+    <rect x="477" y="542" width="365" height="72" rx="18" fill="#edf0f8"/>
+    <rect x="883" y="542" width="365" height="72" rx="18" fill="#fff1e5"/>
+    <circle cx="407" cy="578" r="8" fill="#16a39a"/>
+    <circle cx="812" cy="578" r="8" fill="#24376f"/>
+    <circle cx="1218" cy="578" r="8" fill="#e98024"/>
+    <text x="390" y="585" text-anchor="end" class="caption">كل صف يمثل عميلًا</text>
+    <text x="795" y="585" text-anchor="end" class="caption">كل عمود يمثل خاصية</text>
+    <text x="1200" y="585" text-anchor="end" class="caption">البرتقالي هو الهدف</text>
   </g>
 </svg>
