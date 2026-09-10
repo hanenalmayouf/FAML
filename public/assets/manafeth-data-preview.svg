@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="650" viewBox="0 0 1320 650" role="img" aria-labelledby="title desc">
+  <title id="title">عينة توضيحية من بيانات عملاء منافذ</title>
+  <desc id="desc">جدول يعرض خمسة صفوف حقيقية وأعمدة مختارة من ملف منافذ، مع توضيح أن كل صف يمثل عميلاً وكل عمود يمثل خاصية وأن churned_30d هو الهدف.</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#172c61" flood-opacity="0.13"/>
+    </filter>
+    <style>
+      .ar{font-family:"IBM Plex Sans Arabic","Noto Sans Arabic",Arial,sans-serif}.en{font-family:Inter,Arial,sans-serif}
+      .label{font-size:22px;font-weight:700;fill:#20366f}.small{font-size:17px;font-weight:600;fill:#54627a}
+      .head{font-size:18px;font-weight:700;fill:#fff}.cell{font-size:18px;font-weight:600;fill:#273750}
+      .target{font-size:18px;font-weight:800;fill:#20366f}.caption{font-size:18px;font-weight:700;fill:#20366f}
+    </style>
+  </defs>
+  <rect width="1320" height="650" rx="30" fill="#f7f8fc"/>
+  <g class="ar" direction="rtl">
+    <text x="1248" y="53" text-anchor="end" class="label">صورة مصغّرة من ملف بيانات منافذ</text>
+    <text x="1248" y="84" text-anchor="end" class="small">خمسة عملاء حقيقيين · أعمدة مختارة فقط من أصل 19 عمودًا</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="72" y="120" width="1176" height="392" rx="18" fill="#fff"/>
+    <rect x="72" y="120" width="1176" height="70" rx="18" fill="#24376f"/>
+    <rect x="72" y="172" width="1176" height="18" fill="#24376f"/>
+    <rect x="72" y="190" width="1176" height="64" fill="#fff"/>
+    <rect x="72" y="254" width="1176" height="64" fill="#f1f3f9"/>
+    <rect x="72" y="318" width="1176" height="64" fill="#fff"/>
+    <rect x="72" y="382" width="1176" height="64" fill="#f1f3f9"/>
+    <rect x="72" y="446" width="1176" height="66" fill="#fff"/>
+    <rect x="72" y="120" width="184" height="392" fill="#fff4e8" opacity="0.96"/>
+    <rect x="72" y="120" width="184" height="70" fill="#e98024"/>
+    <path d="M256 120v392M468 120v392M664 120v392M860 120v392M1050 120v392" stroke="#dce1ec"/>
+    <path d="M72 190h1176M72 254h1176M72 318h1176M72 382h1176M72 446h1176" stroke="#dce1ec"/>
+  </g>
+  <g class="en" text-anchor="middle">
+    <text x="164" y="163" class="head">churned_30d</text>
+    <text x="362" y="163" class="head">avg_rating</text>
+    <text x="566" y="155" class="head">days_since_</text><text x="566" y="176" class="head">last_order</text>
+    <text x="762" y="155" class="head">avg_basket_</text><text x="762" y="176" class="head">sar</text>
+    <text x="955" y="163" class="head">city</text>
+    <text x="1149" y="163" class="head">customer_id</text>
+    <text x="164" y="231" class="target">0</text><text x="362" y="231" class="target">NaN</text><text x="566" y="231" class="cell">12</text><text x="762" y="231" class="cell">83.56</text><text x="955" y="231" class="cell">Jeddah</text><text x="1149" y="231" class="cell">C000001</text>
+    <text x="164" y="295" class="target">0</text><text x="362" y="295" class="cell">3.86</text><text x="566" y="295" class="cell">4</text><text x="762" y="295" class="cell">165.64</text><text x="955" y="295" class="cell">Riyadh</text><text x="1149" y="295" class="cell">C000002</text>
+    <text x="164" y="359" class="target">0</text><text x="362" y="359" class="cell">4.01</text><text x="566" y="359" class="cell">21</text><text x="762" y="359" class="cell">149.29</text><text x="955" y="359" class="cell">Dammam</text><text x="1149" y="359" class="cell">C000003</text>
+    <text x="164" y="423" class="target">0</text><text x="362" y="423" class="cell">3.33</text><text x="566" y="423" class="cell">14</text><text x="762" y="423" class="cell">59.72</text><text x="955" y="423" class="cell">Jeddah</text><text x="1149" y="423" class="cell">C000004</text>
+    <text x="164" y="487" class="target">1</text><text x="362" y="487" class="cell">4.48</text><text x="566" y="487" class="cell">83</text><text x="762" y="487" class="cell">46.88</text><text x="955" y="487" class="cell">Riyadh</text><text x="1149" y="487" class="cell">C000005</text>
+  </g>
+  <g class="ar" direction="rtl">
+    <path d="M1138 527v28h-166" fill="none" stroke="#6675a3" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="1138" cy="527" r="5" fill="#6675a3"/>
+    <text x="958" y="563" text-anchor="end" class="caption">كل صف = عميل واحد</text>
+    <path d="M764 107V91h-136" fill="none" stroke="#6675a3" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="764" cy="107" r="5" fill="#6675a3"/>
+    <text x="616" y="98" text-anchor="end" class="caption">كل عمود = خاصية</text>
+    <path d="M164 527v32h154" fill="none" stroke="#e98024" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="164" cy="527" r="6" fill="#e98024"/>
+    <text x="332" y="568" text-anchor="start" class="caption">العمود البرتقالي = الهدف</text>
+    <rect x="405" y="585" width="510" height="43" rx="21.5" fill="#e9edf7"/>
+    <text x="660" y="614" text-anchor="middle" class="small">NaN تعني قيمة مفقودة وليست صفرًا</text>
+  </g>
+</svg>
