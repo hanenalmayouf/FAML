@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="650" viewBox="0 0 1320 650" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="430" viewBox="0 90 1320 430" role="img" aria-labelledby="title desc">
   <title id="title">عينة توضيحية من بيانات عملاء منافذ</title>
   <desc id="desc">جدول يعرض خمسة صفوف حقيقية وأعمدة مختارة من ملف منافذ، مع توضيح أن كل صف يمثل عميلاً وكل عمود يمثل خاصية وأن churned_30d هو الهدف.</desc>
   <defs>
@@ -6,17 +6,12 @@
       <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#172c61" flood-opacity="0.13"/>
     </filter>
     <style>
-      .ar{font-family:"IBM Plex Sans Arabic","Noto Sans Arabic",Arial,sans-serif}.en{font-family:Inter,Arial,sans-serif}
-      .label{font-size:22px;font-weight:700;fill:#20366f}.small{font-size:17px;font-weight:600;fill:#54627a}
+      .en{font-family:Inter,Arial,sans-serif}
       .head{font-size:18px;font-weight:700;fill:#fff}.cell{font-size:18px;font-weight:600;fill:#273750}
-      .target{font-size:18px;font-weight:800;fill:#20366f}.caption{font-size:18px;font-weight:800;fill:#20366f}
+      .target{font-size:18px;font-weight:800;fill:#20366f}
     </style>
   </defs>
   <rect width="1320" height="650" rx="30" fill="#f7f8fc"/>
-  <g class="ar" direction="rtl">
-    <text x="1248" y="53" text-anchor="end" class="label">صورة مصغّرة من ملف بيانات منافذ</text>
-    <text x="1248" y="84" text-anchor="end" class="small">خمسة عملاء حقيقيين · أعمدة مختارة فقط من أصل 19 عمودًا</text>
-  </g>
   <g filter="url(#shadow)">
     <rect x="72" y="120" width="1176" height="392" rx="18" fill="#fff"/>
     <rect x="72" y="120" width="1176" height="70" rx="18" fill="#24376f"/>
@@ -43,16 +38,5 @@
     <text x="164" y="359" class="target">0</text><text x="362" y="359" class="cell">4.01</text><text x="566" y="359" class="cell">21</text><text x="762" y="359" class="cell">149.29</text><text x="955" y="359" class="cell">Dammam</text><text x="1149" y="359" class="cell">C000003</text>
     <text x="164" y="423" class="target">0</text><text x="362" y="423" class="cell">3.33</text><text x="566" y="423" class="cell">14</text><text x="762" y="423" class="cell">59.72</text><text x="955" y="423" class="cell">Jeddah</text><text x="1149" y="423" class="cell">C000004</text>
     <text x="164" y="487" class="target">1</text><text x="362" y="487" class="cell">4.48</text><text x="566" y="487" class="cell">83</text><text x="762" y="487" class="cell">46.88</text><text x="955" y="487" class="cell">Riyadh</text><text x="1149" y="487" class="cell">C000005</text>
-  </g>
-  <g class="ar" direction="rtl">
-    <rect x="72" y="542" width="365" height="72" rx="18" fill="#eaf7f5"/>
-    <rect x="477" y="542" width="365" height="72" rx="18" fill="#edf0f8"/>
-    <rect x="883" y="542" width="365" height="72" rx="18" fill="#fff1e5"/>
-    <circle cx="407" cy="578" r="8" fill="#16a39a"/>
-    <circle cx="812" cy="578" r="8" fill="#24376f"/>
-    <circle cx="1218" cy="578" r="8" fill="#e98024"/>
-    <text x="390" y="585" text-anchor="end" class="caption">كل صف يمثل عميلًا</text>
-    <text x="795" y="585" text-anchor="end" class="caption">كل عمود يمثل خاصية</text>
-    <text x="1200" y="585" text-anchor="end" class="caption">البرتقالي هو الهدف</text>
   </g>
 </svg>
