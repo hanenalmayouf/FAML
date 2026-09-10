@@ -312,8 +312,8 @@ preprocess = ColumnTransformer([
   ));
 
   revise('الخطوة 6: استبعاد المعرّف وتسرب المستقبل', demo(
-    'drop_cols = [\n    &quot;customer_id&quot;,\n    &quot;churned_30d&quot;,\n    &quot;refund_issued&quot;,\n    &quot;support_ticket_after_snapshot&quot;,\n    &quot;next_month_orders&quot;\n]\n\nX = df.drop(columns=drop_cols)\ny = df[&quot;churned_30d&quot;]\n\nprint(X.shape)\nprint(y.shape)',
-    '<p><b>drop_cols</b> قائمة أنشأناها نحن للأعمدة التي لا نريد إدخالها إلى النموذج.</p><ul><li><b>customer_id:</b> رقم تعريفي فقط.</li><li><b>churned_30d:</b> هو الإجابة، لذلك لا يدخل ضمن الأسئلة.</li><li><b>الأعمدة الثلاثة الأخيرة:</b> معلومات من المستقبل لم تكن متاحة وقت التنبؤ.</li></ul><p><b>X:</b> جدول الخصائص (Features) التي سيتعلم منها النموذج.<br><b>y:</b> عمود الهدف (Target) الذي نريد توقعه. الاسمان X وy اصطلاح شائع ويمكن تغييرهما.</p>',
+    '<span class="comment"># أولًا: احفظ الإجابة في y</span>\ny = df[&quot;churned_30d&quot;].copy()\n\n<span class="comment"># ثانيًا: حدد ما لا يدخل في X</span>\ndrop_cols = [\n    &quot;customer_id&quot;,\n    &quot;churned_30d&quot;,\n    &quot;refund_issued&quot;,\n    &quot;support_ticket_after_snapshot&quot;,\n    &quot;next_month_orders&quot;\n]\n\n<span class="comment"># أنشئ جدولًا جديدًا بدون هذه الأعمدة</span>\nX = df.drop(columns=drop_cols)\n\nprint(X.shape)\nprint(y.shape)',
+    '<p><b>أولًا:</b> ننسخ عمود الإجابة من df ونحفظه في y.</p><p><b>ثانيًا:</b> ننشئ X باستخدام <b>df.drop()</b>. هذه الدالة تُرجع جدولًا جديدًا ولا تحذف شيئًا من df الأصلي.</p><p>لذلك يصبح لدينا ثلاث متغيرات: <b>df</b> ما زال يحتوي جميع الأعمدة، و<b>X</b> يحتوي الخصائص فقط، و<b>y</b> يحتوي الإجابة فقط.</p><p><b>مهم:</b> الحذف من الأصل يحدث فقط عند استخدام <span dir="ltr">inplace=True</span>، ونحن لم نستخدمه.</p>',
     'X.shape = (48000, 14)\ny.shape = (48000,)',
     '<b>طريقة التفكير:</b> نعطي النموذج X مثل المدينة وسلوك الطلبات، ثم أثناء التدريب نقارن توقعه بالإجابة الحقيقية الموجودة في y. لا نسمح بأن تكون الإجابة نفسها أو معلومات المستقبل داخل X.'
   ));
