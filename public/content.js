@@ -312,10 +312,10 @@ preprocess = ColumnTransformer([
   ));
 
   revise('الخطوة 6: استبعاد المعرّف وتسرب المستقبل', demo(
-    'X = df.drop(columns=drop_cols)\ny = df[&quot;churned_30d&quot;]',
-    '<b>drop(columns=...)</b> ينشئ جدول خصائص بعد حذف الأعمدة غير المسموح بها. ونفصل الهدف في <b>y</b> حتى لا يدخل ضمن المدخلات.',
+    'drop_cols = [\n    &quot;customer_id&quot;,\n    &quot;churned_30d&quot;,\n    &quot;refund_issued&quot;,\n    &quot;support_ticket_after_snapshot&quot;,\n    &quot;next_month_orders&quot;\n]\n\nX = df.drop(columns=drop_cols)\ny = df[&quot;churned_30d&quot;]\n\nprint(X.shape)\nprint(y.shape)',
+    '<p><b>drop_cols</b> قائمة أنشأناها نحن للأعمدة التي لا نريد إدخالها إلى النموذج.</p><ul><li><b>customer_id:</b> رقم تعريفي فقط.</li><li><b>churned_30d:</b> هو الإجابة، لذلك لا يدخل ضمن الأسئلة.</li><li><b>الأعمدة الثلاثة الأخيرة:</b> معلومات من المستقبل لم تكن متاحة وقت التنبؤ.</li></ul><p><b>X:</b> جدول الخصائص (Features) التي سيتعلم منها النموذج.<br><b>y:</b> عمود الهدف (Target) الذي نريد توقعه. الاسمان X وy اصطلاح شائع ويمكن تغييرهما.</p>',
     'X.shape = (48000, 14)\ny.shape = (48000,)',
-    'كوّن drop_cols بنفسك، واكتب بجانب كل عمود سبب الاستبعاد: معرّف، هدف، أو معلومة من المستقبل.'
+    '<b>طريقة التفكير:</b> نعطي النموذج X مثل المدينة وسلوك الطلبات، ثم أثناء التدريب نقارن توقعه بالإجابة الحقيقية الموجودة في y. لا نسمح بأن تكون الإجابة نفسها أو معلومات المستقبل داخل X.'
   ));
 
   revise('الخطوة 7: الترميز والتحجيم داخل مسار آمن', demo(
