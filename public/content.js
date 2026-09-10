@@ -397,6 +397,13 @@ preprocess = ColumnTransformer([
     'طبّق الفكرة على avg_rating بعد تجاهل القيم المفقودة. في ملف منافذ عدد التقييمات المسجلة خارج النطاق يساوي 0.'
   )));
 
+  insertAfter('الخطوة 5: هل القيمة المرتفعة خطأ؟', content('كيف نفحص القيمة المرتفعة؟', demo(
+    'columns = [\n    &quot;customer_id&quot;, &quot;orders_per_month&quot;,\n    &quot;avg_basket_sar&quot;, &quot;city&quot;\n]\n\ndf.nlargest(5, &quot;avg_basket_sar&quot;)[columns]',
+    '<b>nlargest(5, ...)</b> يعرض أعلى خمس قيم بدل الاكتفاء بأكبر قيمة واحدة. ثم نعرض معها رقم العميل وعدد طلباته ومدينته حتى نرى سياق القيمة.',
+    'customer_id  orders/month  basket   city\nC018537          2.68     534.83  Riyadh\nC011852          3.32     531.49  Riyadh\nC022081          5.07     515.46  Jeddah\nC000183          4.61     515.44  Jeddah\nC013718          1.35     451.77  Riyadh',
+    '<b>قرار الفحص:</b> نتأكد أن الوحدة بالريال، ونقارن بالسجلات الأخرى، ونرجع إلى الطلبات الأصلية أو نظام المصدر. إذا كانت مشتريات كبيرة حقيقية نحتفظ بها؛ وإذا كانت خطأ إدخال أو وحدة خاطئة نصححها أو نستبعدها مع توثيق السبب.'
+  )));
+
   const dayOneDivider = slides.findIndex(slide => slide.includes('من سؤال العمل إلى بيانات جاهزة'));
   const dayTwoDivider = slides.findIndex(slide => slide.includes('من البيانات الجاهزة إلى نموذج تصنيف'));
   const dayOneOrder = [
@@ -424,6 +431,7 @@ preprocess = ColumnTransformer([
     'الخطوة 4أ: فحص الصفوف المكررة',
     'الخطوة 4ب: فحص نطاق القيم',
     'الخطوة 5: هل القيمة المرتفعة خطأ؟',
+    'كيف نفحص القيمة المرتفعة؟',
     'الخطوة 6: استبعاد المعرّف وتسرب المستقبل',
     'اكتشف العمود الآمن',
     'زمن التنبؤ',
