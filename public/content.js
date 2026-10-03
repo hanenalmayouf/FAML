@@ -1706,10 +1706,12 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
     ['تعويض المفقود (Imputation)', '<span dir="ltr">Imputation</span> (تعويض القيم المفقودة)'],
     ['التحجيم (Scaling)', '<span dir="ltr">Scaling</span> (التحجيم)']
   ];
-  slides = slides.map(slide => englishFirstTerms.reduce(
-    (updated, [arabicFirst, englishFirst]) => updated.replaceAll(arabicFirst, englishFirst),
-    slide
-  ));
+  slides.forEach((slide, index) => {
+    slides[index] = englishFirstTerms.reduce(
+      (updated, [arabicFirst, englishFirst]) => updated.replaceAll(arabicFirst, englishFirst),
+      slide
+    );
+  });
 
   deck.innerHTML = slides.join('');
   const thresholdStates = {
