@@ -17,6 +17,7 @@
     .ml-bars{display:flex;flex-direction:column;gap:14px;width:88%;margin:12px auto}.ml-bar{display:grid;grid-template-columns:170px 1fr 80px;gap:12px;align-items:center;font-weight:800}.ml-track{height:25px;background:#e6edf1;border-radius:20px;overflow:hidden}.ml-fill{height:100%;background:linear-gradient(90deg,#0aa79d,#16c4b9);border-radius:20px}.ml-bar.orange .ml-fill{background:linear-gradient(90deg,#ef7837,#ff9a62)}
     .ml-code,.ml-code code{direction:ltr;text-align:left;white-space:pre-wrap;margin:0;background:#071f38!important;color:#eef7f6!important;border-radius:14px;font:700 .9rem/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;text-shadow:none!important}.ml-code{position:relative;padding:18px 22px;border-right:6px solid #16a39a;box-shadow:0 12px 28px rgba(6,30,58,.14)}.ml-code code{padding:0}.ml-code .comment{color:#8bd8cf!important}.ml-code .result{color:#ffb184!important}.ml-code.has-copy{padding-top:50px}.ml-copy{position:absolute;top:9px;right:10px;z-index:2;border:1px solid rgba(255,255,255,.34);border-radius:8px;background:#fff!important;color:#0a315c!important;padding:5px 11px;font:800 .72rem/1.2 "IBM Plex Sans Arabic",Arial,sans-serif;cursor:pointer}.ml-copy:hover,.ml-copy:focus-visible{background:#e8f7f5!important;outline:2px solid #7ed8d0;outline-offset:2px}
     .ml-download{display:inline-flex;align-items:center;justify-content:center;width:max-content;margin:8px auto 0;padding:14px 24px;border-radius:12px;background:#0a315c!important;color:#fff!important;font-weight:900;text-decoration:none;box-shadow:0 10px 24px rgba(10,49,92,.18)}.ml-download:hover{background:#0d477d!important}
+    .ml-download.ml-station-link{margin:10px 0 0;padding:8px 14px;font-size:.78rem;box-shadow:none}.ml-station-hint{margin:7px 0 0!important;font-size:.72rem!important;line-height:1.45!important;color:#536779!important}
     .ml-quiz{display:grid;gap:14px;width:min(900px,92%);margin:0 auto}.ml-question{font-size:1.35rem;line-height:1.75;text-align:center;font-weight:900;color:#0a315c}.ml-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ml-option{border:2px solid #cbd9df;background:#fff;color:#123654;border-radius:14px;padding:16px 18px;font:inherit;font-size:1rem;font-weight:800;line-height:1.5;cursor:pointer;transition:.18s transform,.18s border-color,.18s background}.ml-option:hover,.ml-option:focus-visible{transform:translateY(-2px);border-color:#0aa79d;outline:none}.ml-option.correct{background:#e7f8f4;border-color:#0aa79d;color:#075b55}.ml-option.wrong{background:#fff0eb;border-color:#ef7837;color:#983a13}.ml-feedback{min-height:62px;border-radius:13px;padding:14px 18px;text-align:center;font-weight:800;line-height:1.6;background:#edf3f6;color:#415667}.ml-feedback.correct{background:#e7f8f4;color:#075b55}.ml-feedback.wrong{background:#fff0eb;color:#983a13}
     .ml-activity{background:#fbfcfd!important;color:#172b3f!important}.ml-activity .slide-title{color:#092f5a!important;text-shadow:none!important}.ml-activity .slide-title-line{background:#ef7837!important}.ml-activity .ml-card{background:rgba(255,255,255,.97)!important}.ml-badge{display:inline-block;background:#f47a38;color:#fff;border-radius:20px;padding:5px 14px;font-size:.82rem;font-weight:800;width:max-content}
     .ml-divider .div-title{color:#092f5a!important;text-shadow:none!important;direction:rtl!important;text-align:right!important;justify-self:stretch!important;width:100%!important;max-width:540px!important;font-size:clamp(3rem,5.2vw,5rem)!important;line-height:1.12!important;text-wrap:balance!important;word-break:normal!important}.ml-divider .div-kicker{color:#ef7837!important;text-shadow:none!important}.ml-divider .div-theme{color:#506371!important;text-shadow:none!important;direction:rtl!important;text-align:right!important}.ml-divider .div-obj,.ml-divider .div-obj span:not(.div-obj-num){color:#092f5a!important;text-shadow:none!important}.ml-divider .div-obj-num{color:#fff!important}.ml-quote{font-size:1.55rem;line-height:1.8;color:#0a315c;font-weight:900;text-align:center;padding:38px 70px}.ml-small{font-size:.84rem;color:#657889}
@@ -804,7 +805,7 @@ print(scores["test_score"].std())</code></pre><div class="ml-note orange">في �
   const dayFourUnsupervisedSlides = [
     content('كيف نقيس نجاحًا بلا y؟', `<p class="ml-lead">لا توجد «إجابة صحيحة» للعناقيد، لذلك نصعد من فحص رياضي إلى اختبار فائدة حقيقية.</p>${flow([['1. صلاحية البيانات','مقاييس مناسبة بلا تسريب'],['2. تماسك داخلي','Silhouette ونحوها'],['3. ثبات','هل تتكرر النتيجة؟'],['4. تفسير','هل الفروق مفهومة؟'],['5. فائدة خارجية','هل تحسن قرارًا أو تجربة؟']])}<div class="ml-note dark">أعلى السلم هو الفائدة الخارجية، وليس أجمل رسم للعناقيد.</div>`),
     content('PCA كميزانية تباين', `<p class="ml-lead">PCA ينشئ محاور جديدة تلخص أكبر قدر من التباين. نختار عدد المكونات حسب التباين المفسَّر والحاجة العملية.</p><table class="ml-table"><tr><th>عدد المكونات</th><th>التباين المفسَّر التراكمي</th><th>القرار</th></tr><tr><td>2</td><td>58%</td><td>مناسب للرسم، لكنه يفقد معلومات كثيرة</td></tr><tr><td>5</td><td>82%</td><td>توازن محتمل</td></tr><tr><td>9</td><td>95%</td><td>احتفاظ أعلى مع تلخيص أقل</td></tr></table><div class="ml-note orange">نُجري Scaling قبل PCA لأن الأعمدة الكبيرة رقميًا قد تسيطر على المحاور.</div>`),
-    content('Lab 7: K-Means وPCA على بيانات منافذ', `<span class="ml-badge">تطبيق مجموعات · 55 دقيقة</span><div class="ml-grid"><div class="ml-card"><h3>المسار</h3><ol><li>اختر خصائص سلوكية بلا y.</li><li>طبّق التحجيم.</li><li>جرّب قيمًا مختلفة لـK.</li><li>قارن Elbow وSilhouette.</li><li>لخّص كل عنقود وسمّه.</li><li>استخدم PCA للرسم فقط.</li></ol></div><div class="ml-card orange"><h3>التسليم</h3><ul><li>سبب اختيار K.</li><li>جدول خصائص العناقيد.</li><li>رسم PCA.</li><li>استخدام عملي مقترح وحدّ واحد.</li></ul><a class="ml-download" href="downloads/SDA-AIE-111_Day4_Clustering.ipynb" download>تنزيل Lab التجميع</a></div></div>`, 'ml-activity'),
+    content('Lab 7: K-Means وPCA على بيانات منافذ', `<span class="ml-badge">تطبيق مجموعات · 55 دقيقة</span><div class="ml-grid"><div class="ml-card"><h3>المسار</h3><ol><li>اختر خصائص سلوكية بلا y.</li><li>طبّق التحجيم.</li><li>جرّب قيمًا مختلفة لـK.</li><li>قارن Elbow وSilhouette.</li><li>لخّص كل عنقود وسمّه.</li><li>استخدم PCA للرسم فقط.</li></ol></div><div class="ml-card orange"><h3>التسليم</h3><ul><li>سبب اختيار K.</li><li>جدول خصائص العناقيد.</li><li>رسم PCA.</li><li>استخدام عملي مقترح وحدّ واحد.</li></ul><a class="ml-download" href="downloads/SDA-AIE-111_Day2_KMeans.ipynb" download>تنزيل Lab التجميع</a></div></div>`, 'ml-activity'),
     content('بطاقة النموذج: التسليم الذي يجمع الرحلة', `<table class="ml-table"><tr><th>القسم</th><th>ما نكتبه؟</th></tr><tr><td>الغرض</td><td>المستخدم والقرار والاستخدام غير المناسب</td></tr><tr><td>البيانات</td><td>الوحدة والفترة والخصائص والاستبعادات</td></tr><tr><td>المنهجية</td><td>التقسيم وPipeline وخط الأساس والنماذج</td></tr><tr><td>التقييم</td><td>المقياس والعتبة والنتائج والشرائح</td></tr><tr><td>الحدود</td><td>مواطن الفشل والمخاطر وخطة المراقبة</td></tr></table><div class="ml-note dark">بهذه البطاقة يستطيع شخص لم يحضر التدريب فهم ما بُني، ولماذا، ومتى لا يستخدمه.</div>`)
   ];
   const dayFourUnsupervisedIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">من الخريطة إلى التطبيق: التعلم غير الخاضع للإشراف<'));
@@ -1155,10 +1156,10 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
   }
 
   const dayFourHowIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">كيف سنطبّق في اليوم الرابع؟<'));
-  if (dayFourHowIndex >= 0 && !slides[dayFourHowIndex].includes('SDA-AIE-111_Day4_Clustering.ipynb')) {
+  if (dayFourHowIndex >= 0 && !slides[dayFourHowIndex].includes('SDA-AIE-111_Day2_KMeans.ipynb')) {
     slides[dayFourHowIndex] = slides[dayFourHowIndex].replace(
       '<table class="ml-table">',
-      '<a class="ml-download" href="downloads/SDA-AIE-111_Day4_Clustering.ipynb" download>تنزيل دفتر اليوم الرابع</a><table class="ml-table">'
+      '<a class="ml-download" href="downloads/SDA-AIE-111_Day2_KMeans.ipynb" download>تنزيل دفتر اليوم الرابع</a><table class="ml-table">'
     );
   }
   const dayFourLabIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">Lab 7: K-Means وPCA على بيانات منافذ<'));
@@ -1508,7 +1509,7 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
 
   revise('PCA كميزانية تباين', `<p class="ml-lead">بعد التجميع قد تكون لدينا أعمدة كثيرة لا نستطيع رسمها معًا. نستخدم <b>تحليل المكونات الرئيسية (Principal Component Analysis — PCA)</b> لتلخيصها في محورين يمكن رسمهما.</p><div class="ml-grid"><div class="ml-card"><h3>قبل PCA</h3><p>كل عميل موصوف بعدة خصائص: الطلبات، السلة، العروض، التقييم، والغياب.</p><p>لا نستطيع رؤية خمسة محاور في رسم واحد.</p></div><div class="ml-card orange"><h3>بعد PCA</h3><p>ينشئ محورين جديدين: PC1 وPC2، وكل محور خليط رياضي من الخصائص الأصلية.</p><p>نرسم العملاء ونلوّنهم حسب المجموعة.</p></div></div>${flow([['خصائص كثيرة','يصعب رسمها'],['Scaling','نوحّد المقاييس'],['PCA','يلخّص الاتجاهات'],['محوران','PC1 وPC2'],['رسم','نفحص تداخل العناقيد']])}<div class="ml-note dark"><b>مهم:</b> PCA لا يكوّن المجموعات ولا يسميها. نستخدمه هنا للمشاهدة فقط، وقد يفقد الرسم جزءًا من المعلومات الأصلية.</div>`);
 
-  revise('محطة التطبيق: K-Means وPCA على بيانات منافذ', `<span class="ml-badge">تطبيق مجموعات · 55 دقيقة</span><p class="ml-lead">طبّقوا القصة نفسها على بيانات منافذ، خطوة بخطوة.</p><div class="ml-grid"><div class="ml-card"><h3>نفّذوا</h3><ol><li>اختاروا خصائص سلوكية فقط، من دون y.</li><li>طبّقوا Scaling.</li><li>جرّبوا K = 2 إلى K = 6.</li><li>اقرؤوا Elbow وSilhouette.</li><li>اختاروا K وفسّروا كل مجموعة.</li><li>استخدموا PCA لرسم النتيجة.</li></ol></div><div class="ml-card orange"><h3>سلّموا</h3><ul><li>سبب اختيار الخصائص وK.</li><li>جدول متوسطات كل مجموعة.</li><li>اسم وصفي لكل مجموعة.</li><li>رسم PCA مع تفسير بسيط.</li><li>استخدام عملي واحد وحدّ واحد للنتيجة.</li></ul><a class="ml-download" href="downloads/SDA-AIE-111_Day4_Clustering.ipynb" download>تنزيل Lab اليوم الرابع</a></div></div>`, 'ml-activity');
+  revise('محطة التطبيق: K-Means وPCA على بيانات منافذ', `<span class="ml-badge">تطبيق مجموعات · 55 دقيقة</span><p class="ml-lead">طبّقوا القصة نفسها على بيانات منافذ، خطوة بخطوة.</p><div class="ml-grid"><div class="ml-card"><h3>نفّذوا</h3><ol><li>اختاروا خصائص سلوكية فقط، من دون y.</li><li>طبّقوا Scaling.</li><li>جرّبوا K = 2 إلى K = 6.</li><li>اقرؤوا Elbow وSilhouette.</li><li>اختاروا K وفسّروا كل مجموعة.</li><li>استخدموا PCA لرسم النتيجة.</li></ol></div><div class="ml-card orange"><h3>سلّموا</h3><ul><li>سبب اختيار الخصائص وK.</li><li>جدول متوسطات كل مجموعة.</li><li>اسم وصفي لكل مجموعة.</li><li>رسم PCA مع تفسير بسيط.</li><li>استخدام عملي واحد وحدّ واحد للنتيجة.</li></ul><a class="ml-download" href="downloads/SDA-AIE-111_Day2_KMeans.ipynb" download>تنزيل Lab اليوم الرابع</a></div></div>`, 'ml-activity');
 
   revise('اليوم الرابع — النصف الثاني', `<p class="ml-lead">انتهينا من تطبيق التعلم غير الخاضع للإشراف. الآن نعود إلى رحلة الدورة كاملة ونبني مشروعًا متكاملًا من سؤال العمل حتى التوصية.</p>${flow([['1. المشكلة','قرار واضح ومستخدم محدد'],['2. البيانات','X وy ومنع التسريب'],['3. البناء','Pipeline وBaseline ونموذج'],['4. التقييم','مقياس يناسب الخطأ'],['5. التسليم','Model Card وعرض مختصر']])}<div class="ml-note dark">التجميع جزء تعلم مستقل في النصف الأول. المشروع المتكامل يبدأ الآن ويستخدم ما تعلمناه في الأيام السابقة.</div>`);
   const projectBridgeIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">اليوم الرابع — النصف الثاني<'));
@@ -1622,7 +1623,7 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
     'PCA كميزانية تباين'
   ]);
 
-  revise('محطة التطبيق: K-Means وPCA على بيانات منافذ', `<span class="ml-badge">تطبيق مجموعات · 45 دقيقة</span><p class="ml-lead">طبّقوا التجميع على بيانات منافذ من دون هدف y.</p><div class="ml-grid"><div class="ml-card"><h3>نفّذوا</h3><ol><li>اختاروا خصائص سلوكية فقط.</li><li>طبّقوا Scaling.</li><li>جرّبوا K = 2 إلى K = 6.</li><li>اقرؤوا Elbow وSilhouette.</li><li>اختاروا K وفسّروا كل مجموعة.</li></ol></div><div class="ml-card orange"><h3>سلّموا</h3><ul><li>سبب اختيار الخصائص وK.</li><li>جدول متوسطات كل مجموعة.</li><li>اسم وصفي لكل مجموعة.</li><li>استخدام عملي واحد وحدّ واحد للنتيجة.</li></ul><a class="ml-download" href="downloads/SDA-AIE-111_Day4_Clustering.ipynb" download>تنزيل Lab التجميع</a></div></div>`, 'ml-activity');
+  revise('محطة التطبيق: K-Means وPCA على بيانات منافذ', `<span class="ml-badge">تطبيق موجّه · 35 دقيقة</span><p class="ml-lead">بعد فهم Scaling شغّلوا مثال K-Means المحلول على بيانات منافذ من دون هدف y.</p><div class="ml-grid"><div class="ml-card"><h3>ما الذي ستشاهدونه؟</h3><ol><li>اختيار خصائص سلوكية فقط.</li><li>تعويض المفقود وتطبيق Scaling.</li><li>مقارنة K = 2 إلى K = 6.</li><li>اختيار K = 3 كمثال تعليمي.</li><li>تفسير متوسطات كل مجموعة.</li></ol></div><div class="ml-card orange"><h3>دور الطالب</h3><p>شغّل الخلايا بالترتيب، واقرأ الناتج والتفسير. جميع الأكواد والنتائج المطلوبة مكتملة.</p><a class="ml-download" href="downloads/SDA-AIE-111_Day2_KMeans.ipynb" download>فتح تطبيق K-Means لليوم الثاني</a></div></div>`, 'ml-activity');
   const fundamentalClusteringLabIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">محطة التطبيق: K-Means وPCA على بيانات منافذ<'));
   if (fundamentalClusteringLabIndex >= 0) {
     slides[fundamentalClusteringLabIndex] = slides[fundamentalClusteringLabIndex].replace('محطة التطبيق: K-Means وPCA على بيانات منافذ', 'محطة التطبيق: K-Means على بيانات منافذ');
@@ -1637,15 +1638,43 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
   revise('دفتر اليوم الأول: افتحه الآن', `<p class="ml-lead">في نهاية اليوم سنشغّل جولة عملية قصيرة على بيانات منافذ لنرى الفرق بين مخرجات أنواع التعلم. جميع الأكواد مكتملة وجاهزة.</p><div class="ml-grid"><div class="ml-card"><h3>ماذا ستشاهد؟</h3><ol><li>جدول بيانات حقيقي وخصائص X.</li><li>تصنيفًا يعطي فئة.</li><li>انحدارًا يعطي رقمًا.</li><li>K-Means يعطي مجموعات بلا y.</li></ol></div><div class="ml-card orange"><h3>ماذا يفعل الطالب؟</h3><p>يشغّل الخلايا بالترتيب ويقرأ الشرح الموجود تحت كل ناتج فقط. لا توجد كتابة أو أكواد ناقصة أو تسليم مطلوب.</p><a class="ml-download" href="downloads/SDA-AIE-111_Day1_Interactive_Workbook.ipynb" download>تنزيل دفتر اليوم الأول</a></div></div><div class="ml-note dark">هذا عرض تنفيذي تمهيدي. سنتعلم بناء الخطوات بأنفسنا في الأيام التالية.</div>`, 'ml-activity');
   const dayOnePracticalIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">دفتر اليوم الأول: افتحه الآن<'));
   if (dayOnePracticalIndex >= 0) {
-    slides[dayOnePracticalIndex] = slides[dayOnePracticalIndex].replace('دفتر اليوم الأول: افتحه الآن', 'تطبيق اليوم الأول: شاهد أنواع التعلم على بيانات منافذ');
+    slides[dayOnePracticalIndex] = slides[dayOnePracticalIndex]
+      .replace('دفتر اليوم الأول: افتحه الآن', 'تطبيق نهاية اليوم الأول: شاهد أنواع التعلم على بيانات منافذ')
+      .replace('في نهاية اليوم سنشغّل', 'بعد أن فهمنا الأنواع الثلاثة، سنشغّل');
   }
+
+  // مزامنة التطبيق مع الشرح: لا يظهر دفتر اليوم الأول قبل شرح الأنواع الثلاثة.
+  const dayOneDemoIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">تطبيق نهاية اليوم الأول:'));
+  const threeWaysComparisonIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">مقارنة طرق التعلم الثلاث<'));
+  if (dayOneDemoIndex >= 0 && threeWaysComparisonIndex >= 0) {
+    const [dayOneDemo] = slides.splice(dayOneDemoIndex, 1);
+    const updatedComparisonIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">مقارنة طرق التعلم الثلاث<'));
+    slides.splice(updatedComparisonIndex + 1, 0, dayOneDemo);
+  }
+
+  const addLabButton = (title, file, label, instruction) => {
+    const index = slides.findIndex(slide => slide.includes('<div class="slide-title">' + title + '<'));
+    if (index < 0 || slides[index].includes(`href="downloads/${file}"`)) return;
+    const block = `<a class="ml-download ml-station-link" href="downloads/${file}" download>${label}</a><p class="ml-station-hint">${instruction}</p>`;
+    const cardBoundary = '</div></div><div class="ml-note';
+    slides[index] = slides[index].includes(cardBoundary)
+      ? slides[index].replace(cardBoundary, block + cardBoundary)
+      : slides[index].replace('<div class="slide-footer"></div>', block + '<div class="slide-footer"></div>');
+  };
+
+  addLabButton('محطة التطبيق 1: افهم بيانات منافذ', 'SDA-AIE-111_Day2_Full_Day_Lab.ipynb', 'فتح محطة 1 في دفتر اليوم الثاني', 'شغّل من البداية حتى نهاية «المحطة 1 — افهم الجدول»، ثم عُد إلى العرض.');
+  addLabButton('محطة التطبيق 2: افحص البيانات ونظّفها', 'SDA-AIE-111_Day2_Full_Day_Lab.ipynb', 'فتح محطة 2 في دفتر اليوم الثاني', 'تابع «المحطة 2 — افحص الجودة ونظّف نسخة من البيانات»، ثم عُد إلى العرض.');
+  addLabButton('محطة التطبيق 3: جهّز X وy بأمان', 'SDA-AIE-111_Day2_Full_Day_Lab.ipynb', 'فتح محطة 3 في دفتر اليوم الثاني', 'تابع «المحطة 3 — جهّز X وy ومنع التسريب»، ثم عُد إلى العرض.');
+  addLabButton('المحطة الختامية لليوم الثاني: ابنِ نموذج تصنيف كاملًا', 'SDA-AIE-111_Day2_Full_Day_Lab.ipynb', 'فتح المحطتين 4 و5 في دفتر اليوم الثاني', 'أكمل التقسيم وPipeline وBaseline ثم نموذج التصنيف.');
+  addLabButton('تشغيل موجّه: غيّر العتبة وشاهد أثر القرار', 'SDA-AIE-111_Day3_Model_Selection.ipynb', 'فتح محطة العتبات في Colab', 'شغّل المحطتين 1 و2 فقط، ولا تنتقل إلى الانحدار بعد.');
+  addLabButton('محطة التطبيق: ابنِ نموذج انحدار', 'SDA-AIE-111_Day3_Model_Selection.ipynb', 'فتح محطة الانحدار في Colab', 'شغّل «المحطة 3 — ابنِ نموذج انحدار»، ثم عُد إلى العرض.');
 
   const colabBase = 'https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/';
   const colabNotebooks = [
     'SDA-AIE-111_Day1_Interactive_Workbook.ipynb',
     'SDA-AIE-111_Day2_Full_Day_Lab.ipynb',
     'SDA-AIE-111_Day3_Model_Selection.ipynb',
-    'SDA-AIE-111_Day4_Clustering.ipynb'
+    'SDA-AIE-111_Day2_KMeans.ipynb'
   ];
   slides.forEach((slide, index) => {
     colabNotebooks.forEach(file => {

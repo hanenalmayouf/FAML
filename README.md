@@ -30,7 +30,7 @@ public/index.html
 - [دفتر اليوم الأول](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day1_Interactive_Workbook.ipynb)
 - [لاب اليوم الثاني](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day2_Full_Day_Lab.ipynb)
 - [لاب اليوم الثالث](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day3_Model_Selection.ipynb)
-- [لاب K-Means](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day4_Clustering.ipynb)
+- [تطبيق K-Means لليوم الثاني](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day2_KMeans.ipynb)
 
 تُحمّل دفاتر التطبيق بيانات منافذ تلقائيًا من:
 
