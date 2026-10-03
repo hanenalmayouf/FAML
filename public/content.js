@@ -1767,4 +1767,5 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
     feedback.textContent = option.dataset.reason;
   });
   deck.querySelectorAll('.ml-slide').forEach((slide,index)=>slide.querySelector('.slide-inner')?.insertAdjacentHTML('afterbegin',`<span class="ml-index">${String(index+2).padStart(2,'0')}</span>`));
+  document.documentElement.classList.remove('course-loading');
 })();

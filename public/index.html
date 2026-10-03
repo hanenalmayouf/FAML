@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="course-loading">
 
 <head>
   <meta charset="UTF-8">
@@ -4670,9 +4670,67 @@
       color: var(--teal);
     }
   </style>
+  <style>
+    html.course-loading body {
+      background: #f7f9fb;
+    }
+    html.course-loading #deck,
+    html.course-loading #progress-bar,
+    html.course-loading #quick-navigation,
+    html.course-loading #annotation-toolbar,
+    html.course-loading #annotation-canvas {
+      visibility: hidden !important;
+    }
+    #course-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: none;
+      place-items: center;
+      background: #f7f9fb;
+      color: #0a315c;
+      font-family: 'Tajawal', sans-serif;
+      text-align: center;
+    }
+    html.course-loading #course-loader {
+      display: grid;
+    }
+    .course-loader-card {
+      display: grid;
+      justify-items: center;
+      gap: 18px;
+    }
+    .course-loader-mark {
+      width: 58px;
+      height: 58px;
+      border: 6px solid #d9e6e8;
+      border-top-color: #0aa79d;
+      border-right-color: #ef7837;
+      border-radius: 50%;
+      animation: course-loader-spin .8s linear infinite;
+    }
+    .course-loader-title {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 900;
+    }
+    .course-loader-subtitle {
+      color: #5b6f7e;
+      font-size: 1rem;
+    }
+    @keyframes course-loader-spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 
 <body>
+  <div id="course-loader" role="status" aria-live="polite">
+    <div class="course-loader-card">
+      <span class="course-loader-mark" aria-hidden="true"></span>
+      <div class="course-loader-title">أساسيات تعلم الآلة التطبيقية</div>
+      <div class="course-loader-subtitle">جارٍ تجهيز السلايدات…</div>
+    </div>
+  </div>
   <div id="progress-bar">
     <div id="progress-fill"></div>
   </div>
@@ -6740,7 +6798,7 @@
     <button id="annotation-clear-all" type="button" title="مسح الكتابات من جميع الشرائح">مسح الكل</button>
   </div>
 
-  <script src="./content.js?v=229"></script>
+  <script src="./content.js?v=230"></script>
   <script>
     const slides = document.querySelectorAll('.slide');
     const fill = document.getElementById('progress-fill');
