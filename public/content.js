@@ -1634,6 +1634,12 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
     slides[finalDayThreeLabIndex] = slides[finalDayThreeLabIndex].replace('المحطة الختامية لليوم الثالث: قارن واضبط دون لمس الاختبار', 'المحطة الختامية لليوم الثالث: طبّق وقارن النماذج');
   }
 
+  revise('دفتر اليوم الأول: افتحه الآن', `<p class="ml-lead">في نهاية اليوم سنشغّل جولة عملية قصيرة على بيانات منافذ لنرى الفرق بين مخرجات أنواع التعلم. جميع الأكواد مكتملة وجاهزة.</p><div class="ml-grid"><div class="ml-card"><h3>ماذا ستشاهد؟</h3><ol><li>جدول بيانات حقيقي وخصائص X.</li><li>تصنيفًا يعطي فئة.</li><li>انحدارًا يعطي رقمًا.</li><li>K-Means يعطي مجموعات بلا y.</li></ol></div><div class="ml-card orange"><h3>ماذا يفعل الطالب؟</h3><p>يشغّل الخلايا بالترتيب ويقرأ الشرح الموجود تحت كل ناتج فقط. لا توجد كتابة أو أكواد ناقصة أو تسليم مطلوب.</p><a class="ml-download" href="downloads/SDA-AIE-111_Day1_Interactive_Workbook.ipynb" download>تنزيل دفتر اليوم الأول</a></div></div><div class="ml-note dark">هذا عرض تنفيذي تمهيدي. سنتعلم بناء الخطوات بأنفسنا في الأيام التالية.</div>`, 'ml-activity');
+  const dayOnePracticalIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">دفتر اليوم الأول: افتحه الآن<'));
+  if (dayOnePracticalIndex >= 0) {
+    slides[dayOnePracticalIndex] = slides[dayOnePracticalIndex].replace('دفتر اليوم الأول: افتحه الآن', 'تطبيق اليوم الأول: شاهد أنواع التعلم على بيانات منافذ');
+  }
+
   const colabBase = 'https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/';
   const colabNotebooks = [
     'SDA-AIE-111_Day1_Interactive_Workbook.ipynb',
@@ -1645,7 +1651,7 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
     colabNotebooks.forEach(file => {
       slides[index] = slides[index]
         .replace(`href="downloads/${file}" download`, `href="${colabBase}${file}" target="_blank" rel="noopener"`)
-        .replace(/>تنزيل دفتر اليوم الأول</g, '>فتح دفتر اليوم الأول في Google Colab<')
+        .replace(/>تنزيل دفتر اليوم الأول</g, '>فتح تطبيق اليوم الأول في Google Colab<')
         .replace(/>تنزيل دفتر اليوم الثاني الكامل</g, '>فتح دفتر اليوم الثاني في Google Colab<')
         .replace(/>تنزيل دفتر اليوم الثالث الكامل</g, '>فتح دفتر اليوم الثالث في Google Colab<')
         .replace(/>تنزيل Lab التجميع</g, '>فتح Lab K-Means في Google Colab<');
