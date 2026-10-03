@@ -1478,7 +1478,7 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
   const dayThreeDividerIndex = slides.findIndex(slide => slide.includes('<div class="div-kicker">اليوم الثالث</div>'));
   if (dayThreeDividerIndex >= 0) {
     slides[dayThreeDividerIndex] = slides[dayThreeDividerIndex]
-      .replace('<div class="div-title">التقييم العادل والنماذج المجمعة</div>', '<div class="div-title">التعلم الخاضع للإشراف <span dir="ltr">(Supervised Learning)</span></div>')
+      .replace('<div class="div-title">التقييم العادل والنماذج المجمعة</div>', '<div class="div-title">التعلم الخاضع للإشراف</div>')
       .replace('<div class="div-theme">قارن النماذج ببيانات التحقق نفسها وحلّل مواضع الخطأ</div>', '<div class="div-theme">نبني نماذج التصنيف والانحدار، ونقيّمها، ثم نتعرّف على النماذج الشجرية المجمّعة</div>')
       .replace('<span>المقاييس ومصفوفة الالتباس وPR-AUC</span>', '<span>التصنيف ومقاييس تقييمه</span>')
       .replace('<span>المقارنة على بيانات التحقق وتحليل الشرائح</span>', '<span>الانحدار ومقاييس تقييمه</span>')
@@ -1667,6 +1667,8 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
   addLabButton('المحطة الختامية لليوم الثاني: ابنِ نموذج تصنيف كاملًا', 'SDA-AIE-111_Day2_Full_Day_Lab.ipynb', 'فتح المحطتين 4 و5 في دفتر اليوم الثاني', 'أكمل التقسيم وPipeline وBaseline ثم نموذج التصنيف.');
   addLabButton('تشغيل موجّه: غيّر العتبة وشاهد أثر القرار', 'SDA-AIE-111_Day3_Model_Selection.ipynb', 'فتح محطة العتبات في Colab', 'شغّل المحطتين 1 و2 فقط، ولا تنتقل إلى الانحدار بعد.');
   addLabButton('محطة التطبيق: ابنِ نموذج انحدار', 'SDA-AIE-111_Day3_Model_Selection.ipynb', 'فتح محطة الانحدار في Colab', 'شغّل «المحطة 3 — ابنِ نموذج انحدار»، ثم عُد إلى العرض.');
+
+  removeSlideTitles(['كيف سنطبّق في اليوم الثاني؟']);
 
   const colabBase = 'https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/';
   const colabNotebooks = [
