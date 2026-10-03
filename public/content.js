@@ -1694,6 +1694,23 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
     });
   });
 
+  const englishFirstTerms = [
+    ['التعلم الخاضع للإشراف (Supervised Learning)', '<span dir="ltr">Supervised Learning</span> (التعلم الخاضع للإشراف)'],
+    ['التعلم غير الخاضع للإشراف (Unsupervised Learning)', '<span dir="ltr">Unsupervised Learning</span> (التعلم غير الخاضع للإشراف)'],
+    ['الانحدار الخطي (Linear Regression)', '<span dir="ltr">Linear Regression</span> (الانحدار الخطي)'],
+    ['الانحدار اللوجستي (Logistic Regression)', '<span dir="ltr">Logistic Regression</span> (الانحدار اللوجستي)'],
+    ['شجرة القرار (Decision Tree)', '<span dir="ltr">Decision Tree</span> (شجرة القرار)'],
+    ['الغابة العشوائية (Random Forest)', '<span dir="ltr">Random Forest</span> (الغابة العشوائية)'],
+    ['التعزيز المتدرج (Gradient Boosting)', '<span dir="ltr">Gradient Boosting</span> (التعزيز المتدرج)'],
+    ['الترميز الأحادي (One-Hot Encoding)', '<span dir="ltr">One-Hot Encoding</span> (الترميز الأحادي)'],
+    ['تعويض المفقود (Imputation)', '<span dir="ltr">Imputation</span> (تعويض القيم المفقودة)'],
+    ['التحجيم (Scaling)', '<span dir="ltr">Scaling</span> (التحجيم)']
+  ];
+  slides = slides.map(slide => englishFirstTerms.reduce(
+    (updated, [arabicFirst, englishFirst]) => updated.replaceAll(arabicFirst, englishFirst),
+    slide
+  ));
+
   deck.innerHTML = slides.join('');
   const thresholdStates = {
     30: {tp:23, fn:2, fp:27, tn:48, recall:92, precision:46},
