@@ -1682,6 +1682,21 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
 
   removeSlideTitles(['كيف سنطبّق في اليوم الثاني؟']);
 
+  // تأطير المشكلة يسبق اختيار نوع التعلم والخوارزمية.
+  moveTitlesAfter('متى نستخدم تعلم الآلة؟', [
+    'صياغة مسألة تعلم آلة جيدة',
+    'أي صياغة أفضل؟',
+    'نشاط 1: حوّل تحديًا إلى مسألة تعلم آلة'
+  ]);
+  slides.forEach((slide, index) => {
+    if (slide.includes('<div class="slide-title">صياغة مسألة تعلم آلة جيدة<')) {
+      slides[index] = slide.replace(
+        /<p class="ml-lead">.*?<\/p>/,
+        '<p class="ml-lead">بعد أن عرفنا متى تكون المشكلة مناسبة لتعلم الآلة، نحتاج صياغتها بدقة قبل اختيار نوع التعلم أو الخوارزمية. المثال التالي من بيانات «منافذ».</p>'
+      );
+    }
+  });
+
   const colabBase = 'https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/';
   const colabNotebooks = [
     'SDA-AIE-111_Day1_Interactive_Workbook.ipynb',
