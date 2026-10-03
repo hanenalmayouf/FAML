@@ -1628,6 +1628,30 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
     slides[fundamentalClusteringLabIndex] = slides[fundamentalClusteringLabIndex].replace('محطة التطبيق: K-Means وPCA على بيانات منافذ', 'محطة التطبيق: K-Means على بيانات منافذ');
   }
 
+  revise('المحطة الختامية لليوم الثالث: قارن واضبط دون لمس الاختبار', `<span class="ml-badge">تطبيق مجموعات · 50 دقيقة</span><div class="ml-grid"><div class="ml-card"><h3>المطلوب</h3><ol><li>شغّل Logistic Regression وRandom Forest.</li><li>قارنهما على بيانات التحقق نفسها وبـPR-AUC.</li><li>غيّر عتبة Logistic Regression ولاحظ Precision وRecall.</li><li>ابنِ نموذج Linear Regression وقِس MAE وRMSE وR².</li><li>اختر نموذج التصنيف ثم افتح الاختبار مرة واحدة.</li></ol></div><div class="ml-card orange"><h3>التسليم</h3><ul><li>جدول أثر العتبات.</li><li>جدول مقارنة نموذجي التصنيف.</li><li>نتائج نموذج الانحدار.</li><li>سبب اختيار النموذج النهائي.</li></ul><a class="ml-download" href="downloads/SDA-AIE-111_Day3_Model_Selection.ipynb" download>تنزيل دفتر اليوم الثالث الكامل</a></div></div>`, 'ml-activity');
+  const finalDayThreeLabIndex = slides.findIndex(slide => slide.includes('<div class="slide-title">المحطة الختامية لليوم الثالث: قارن واضبط دون لمس الاختبار<'));
+  if (finalDayThreeLabIndex >= 0) {
+    slides[finalDayThreeLabIndex] = slides[finalDayThreeLabIndex].replace('المحطة الختامية لليوم الثالث: قارن واضبط دون لمس الاختبار', 'المحطة الختامية لليوم الثالث: طبّق وقارن النماذج');
+  }
+
+  const colabBase = 'https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/';
+  const colabNotebooks = [
+    'SDA-AIE-111_Day1_Interactive_Workbook.ipynb',
+    'SDA-AIE-111_Day2_Full_Day_Lab.ipynb',
+    'SDA-AIE-111_Day3_Model_Selection.ipynb',
+    'SDA-AIE-111_Day4_Clustering.ipynb'
+  ];
+  slides.forEach((slide, index) => {
+    colabNotebooks.forEach(file => {
+      slides[index] = slides[index]
+        .replace(`href="downloads/${file}" download`, `href="${colabBase}${file}" target="_blank" rel="noopener"`)
+        .replace(/>تنزيل دفتر اليوم الأول</g, '>فتح دفتر اليوم الأول في Google Colab<')
+        .replace(/>تنزيل دفتر اليوم الثاني الكامل</g, '>فتح دفتر اليوم الثاني في Google Colab<')
+        .replace(/>تنزيل دفتر اليوم الثالث الكامل</g, '>فتح دفتر اليوم الثالث في Google Colab<')
+        .replace(/>تنزيل Lab التجميع</g, '>فتح Lab K-Means في Google Colab<');
+    });
+  });
+
   deck.innerHTML = slides.join('');
   const thresholdStates = {
     30: {tp:23, fn:2, fp:27, tn:48, recall:92, precision:46},

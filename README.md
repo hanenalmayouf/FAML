@@ -24,3 +24,14 @@ public/index.html
 - اليوم الخامس: عرض المشاريع وتقييمها.
 
 دفاتر Jupyter موجودة داخل `public/downloads/`.
+
+## فتح اللابات في Google Colab
+
+- [دفتر اليوم الأول](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day1_Interactive_Workbook.ipynb)
+- [لاب اليوم الثاني](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day2_Full_Day_Lab.ipynb)
+- [لاب اليوم الثالث](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day3_Model_Selection.ipynb)
+- [لاب K-Means](https://colab.research.google.com/github/hanenalmayouf/FAML/blob/main/public/downloads/SDA-AIE-111_Day4_Clustering.ipynb)
+
+تُحمّل دفاتر التطبيق بيانات منافذ تلقائيًا من:
+
+`public/data/manafeth_customers.csv`
