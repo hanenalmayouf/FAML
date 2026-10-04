@@ -1737,6 +1737,15 @@ print(baseline_score)</code></pre><div class="ml-card orange"><h3>ماذا حد�
     }
   });
 
+  // لا نوحي بوجود Lab مستقل داخل شرائح الشرح؛ نحتفظ بكلمة Lab للمحطات المرتبطة بدفتر فعلي فقط.
+  slides.forEach((slide, index) => {
+    slides[index] = slide
+      .replaceAll('<b>في المختبر:</b>', '<b>خطوة عملية:</b>')
+      .replaceAll('في المختبر ستظهر القيم المفقودة', 'عند تشغيل الكود ستظهر القيم المفقودة')
+      .replaceAll('في المختبر الختامي', 'في المحطة الختامية')
+      .replaceAll('هذا المختبر؛', 'هذا التطبيق؛');
+  });
+
   const englishFirstTerms = [
     ['التعلم الخاضع للإشراف (Supervised Learning)', '<span dir="ltr">Supervised Learning</span> (التعلم الخاضع للإشراف)'],
     ['التعلم غير الخاضع للإشراف (Unsupervised Learning)', '<span dir="ltr">Unsupervised Learning</span> (التعلم غير الخاضع للإشراف)'],
